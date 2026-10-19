@@ -98,8 +98,13 @@ def format_all_examples(examples):
     # TODO: apply format_instruction_example to every example and return the list
     return [format_instruction_example(example) for example in examples]
 
-# Step 12 - build_text_dataset (not yet solved)
-# TODO: implement
+# Step 12 - build_text_dataset
+import datasets
+
+def build_text_dataset(texts):
+    """Wrap a list of training strings in a HF Dataset with a 'text' column."""
+    # TODO: return a datasets.Dataset with one 'text' column holding the given strings
+    return datasets.Dataset.from_dict({"text": texts})
 
 # Step 13 - tokenize_text (not yet solved)
 # TODO: implement
