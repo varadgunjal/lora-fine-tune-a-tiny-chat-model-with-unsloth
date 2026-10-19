@@ -76,8 +76,15 @@ def trainable_fraction(trainable_count, total_count):
     # TODO: return the fraction of parameters that are trainable.
     return trainable_count / total_count
 
-# Step 9 - build_instruction_examples (not yet solved)
-# TODO: implement
+# Step 9 - build_instruction_examples
+def build_instruction_examples():
+    """Return a small list of {'instruction', 'response'} dicts for SFT."""
+    # TODO: return a tiny hand-written list of instruction/response example dicts.
+    return [
+        {"instruction": """A store sells notebooks for $3 each or a pack of 5 for $12. What is the cheapest way to buy exactly 13 notebooks, and how much does it cost?""", "response": """Packs are cheaper per notebook ($12 / 5 = $2.40, compared with $3.00 single), so use as many packs as possible.\n\n- 2 packs = 10 notebooks for $24\n- 3 singles = 3 notebooks for $9\n- Total: 13 notebooks for $33\n\nCheck the alternatives: 1 pack + 8 singles = $12 + $24 = $36, and 13 singles = $39. A third pack would give 15 notebooks for $36, which is more than $33 and doesn't meet the 'exactly 13' requirement.\n\n**Answer: buy 2 packs and 3 single notebooks, for $33."""},
+        {"instruction": """Write a Python function that returns the first non-repeating character in a string, or None if every character repeats.""", "response": """```python\nfrom collections import Counter\n\ndef first_unique_char(s: str) -> str | None:\n    counts = Counter(s)\n    for ch in s:\n        if counts[ch] == 1:\n            return ch\n    return None\n```\n\n**How it works:** The first pass counts how often each character appears. The second pass walks the string in its original order and returns the first character with a count of 1, so the result respects position, not alphabetical order.\n\n**Complexity: **O(n) time and O(k) space, where k is the number of distinct characters.\n\n**Examples:**\n```python\nfirst_unique_char(\"swiss\")   #  'w'\nfirst_unique_char(\"aabb\")    # None\nfirst_unique_char(\"\")        # None\n```"""},
+        {"instruction": """Rewrite this message to my landlord so it's polite but firm: 'The heater has been broken for two weeks and nobody has come. This is unacceptable. Fix it now.'""", "response": """Subject: Urgent: Heater Repair Still Outstanding\n\nHi [Landlord's name],\n\nI'm writing to follow up on the broken heater in my unit, which I first reported on [date]. It has now been two weeks without heat, and no one has come to inspect or repair it yet.\n\nWith the colder weather, this is becoming a serious problem, and I'd appreciate it being treated as a priority. Could you please arrange a repair visit within the next 48 hours and let me know the scheduled time?\n\nI'm happy to be flexible about access to the unit. Thank you for your prompt attention to this.\n\nBest regards,\n[Your name]\n[Unit number]\n[Phone number]"""}
+    ]
 
 # Step 10 - format_instruction_example (not yet solved)
 # TODO: implement
