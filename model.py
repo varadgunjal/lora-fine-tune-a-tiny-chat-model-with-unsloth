@@ -186,8 +186,12 @@ def switch_to_inference_mode(model):
     # TODO: call the Unsloth helper that prepares the model for fast generation
     return FastLanguageModel.for_inference(model)
 
-# Step 19 - build_chat_prompt (not yet solved)
-# TODO: implement
+# Step 19 - build_chat_prompt
+def build_chat_prompt(tokenizer, instruction):
+    """Return a chat-template prompt string ready for assistant generation."""
+    # TODO: wrap the instruction as a user turn and produce the assistant-generation prompt string
+    messages = [{"role": "user", "content": instruction}]
+    return tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
 
 # Step 20 - generate_reply (not yet solved)
 # TODO: implement
