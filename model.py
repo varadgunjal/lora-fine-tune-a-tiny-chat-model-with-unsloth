@@ -86,8 +86,11 @@ def build_instruction_examples():
         {"instruction": """Rewrite this message to my landlord so it's polite but firm: 'The heater has been broken for two weeks and nobody has come. This is unacceptable. Fix it now.'""", "response": """Subject: Urgent: Heater Repair Still Outstanding\n\nHi [Landlord's name],\n\nI'm writing to follow up on the broken heater in my unit, which I first reported on [date]. It has now been two weeks without heat, and no one has come to inspect or repair it yet.\n\nWith the colder weather, this is becoming a serious problem, and I'd appreciate it being treated as a priority. Could you please arrange a repair visit within the next 48 hours and let me know the scheduled time?\n\nI'm happy to be flexible about access to the unit. Thank you for your prompt attention to this.\n\nBest regards,\n[Your name]\n[Unit number]\n[Phone number]"""}
     ]
 
-# Step 10 - format_instruction_example (not yet solved)
-# TODO: implement
+# Step 10 - format_instruction_example
+def format_instruction_example(example):
+    """Return a single training string with role markers for instruction and response."""
+    # TODO: combine example['instruction'] and example['response'] into one string
+    return f"""### Instruction:\n{example["instruction"]}\n\n### Response:\n{example["response"]}"""
 
 # Step 11 - format_all_examples (not yet solved)
 # TODO: implement
